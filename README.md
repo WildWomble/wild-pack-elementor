@@ -1,5 +1,7 @@
 ## (WIP) Wild Pack - Elementor Addons
 
+A simple bundle of addons for elementor.
+
 Contains:
 
 * Restaurant Menu Widget - You can show products in a restaurant style-like fashion with other information such as Nutrition Facts & Ingredients which are shown on click. The widget allows the selection of 2 languages which is selectable by the frontend user.
