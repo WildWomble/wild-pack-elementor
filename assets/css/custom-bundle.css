@@ -1,0 +1,212 @@
+.edm-product-list {
+    margin-bottom: 7%;
+}
+
+.edm-product-list h3 {
+    font-weight: bold;
+    text-align: center;
+}
+
+.edm-product-list ul {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+}
+
+.edm-product-list ul label {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.edm-product-list li input + label {
+    border-radius: 10px;
+}
+
+.edm-product-list li input:hover + label {
+    box-shadow: 0px 0px 4px 1px #0000005c;
+}
+
+.edm-product-list li input:checked + label {
+    box-shadow: 0px 0px 4px 1px green;
+}
+
+.edm-product-list li input:checked + label .product-image:after {
+    content: "\2713";
+    font-weight: bold;
+    font-size: 16px;
+    display: flex;
+    width: 30px;
+    height: 30px;
+    justify-content: center;
+    text-align: center;
+    background: green;
+    color: white;
+    border-radius: 50%;
+    padding: 5px;
+    position: absolute;
+    top: 1%;
+    right: 1%;
+    line-height: 1.4;
+}
+
+.edm-product-list li .product-name {
+    font-weight: bold;
+    text-transform: capitalize;
+    font-size: 16px;
+    text-align: center;
+    padding: 10px 0;
+    text-transform: uppercase
+}
+
+.product-image {
+    position: relative;
+    background: white;
+    border-radius: 5px;
+}
+
+.product-image img {
+    height: 160px;
+    object-fit: cover;
+}
+
+.edm-subtitle {
+    display: flex;
+    justify-content: center;
+    font-style: italic;
+}
+
+.edm-subtitle h4 {
+    font-size: 18px;
+}
+
+.products li {
+    margin: 5px !important;
+    flex: 0 1 calc(20% - 10px);
+}
+
+.products li label {
+    cursor: pointer;
+    padding: 10px !important;
+    margin: 0 !important;
+}
+
+.products li:hover {
+    border-radius: 10px;
+}
+
+.products li input {
+    display: none
+}
+
+.form-actions {
+    position: sticky;
+    bottom: 15px;
+    float: right
+}
+
+.form-actions a {
+    padding: 10px 25px;
+    font-size: 20px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+    border: 3px solid red;
+}
+
+#edm-add-to-cart {
+    background: red;
+    color: #fff;
+}
+
+#edm-add-to-cart:hover {
+    border-color: black
+}
+
+#edm-checkout {
+    color: red;
+    background-color: white;
+}
+
+#edm-checkout:hover {
+    background: red;
+    color: #fff
+}
+
+#edm-add-to-cart:hover {
+    background: black;
+}
+
+.item-hidden {
+    display: none !important;
+}
+
+#edm-popup > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #ffffff8c;
+}
+
+#edm-popup-message {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 15px
+}
+
+#buy-another, #edm-checkout {
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: 300px;
+    text-align: center;
+    margin: 2px;
+}
+
+#buy-another {
+    border: 3px solid red;
+    color: red;
+}
+
+#buy-another:hover {
+    background: #4389c8;
+    color: white;
+    border-color: #4389c8;
+}
+
+#edm-checkout {
+    background: red;
+    color: white;
+}
+
+#edm-checkout:hover {
+    background: #c10000;
+    color: white;
+}
+
+#edm-checkout::before {
+  content: "";
+  display: inline-flex;
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+  background-color: #fff;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' style='fill: rgba(0, 0, 0, 1);transform: ;msFilter:;'%3E%3Cpath d='M20 12c0-1.103-.897-2-2-2h-1V7c0-2.757-2.243-5-5-5S7 4.243 7 7v3H6c-1.103 0-2 .897-2 2v8c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-8zM9 7c0-1.654 1.346-3 3-3s3 1.346 3 3v3H9V7z'%3E%3C/path%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' style='fill: rgba(0, 0, 0, 1);transform: ;msFilter:;'%3E%3Cpath d='M20 12c0-1.103-.897-2-2-2h-1V7c0-2.757-2.243-5-5-5S7 4.243 7 7v3H6c-1.103 0-2 .897-2 2v8c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-8zM9 7c0-1.654 1.346-3 3-3s3 1.346 3 3v3H9V7z'%3E%3C/path%3E%3C/svg%3E");
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  -webkit-mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+}
