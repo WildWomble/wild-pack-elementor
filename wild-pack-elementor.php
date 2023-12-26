@@ -30,10 +30,12 @@ function widget_scripts() {
 	/* Styles */
 	wp_register_style( 'ww-custom-bundle-css', plugins_url( 'assets/css/custom-bundle.css', __FILE__ ), array(), '1.0.0', 'all' );
 	wp_register_style( 'ww-restaurant-menu-css', plugins_url( 'assets/css/restaurant-menu.css', __FILE__ ), array(), '1.0.0', 'all' );
+	wp_register_style( 'ww-rmwoo-css', plugins_url( 'assets/css/restaurant-menu-woo.css', __FILE__ ), array(), '1.0.0', 'all' );
 	
 	/* Scripts */
 	wp_register_script( 'ww-custom-bundle-js', plugins_url( 'assets/js/custom-bundle.js', __FILE__ ), array('jquery'), '1.0.0', true );
 	wp_register_script( 'ww-restaurant-menu-js', plugins_url( 'assets/js/restaurant-menu.js', __FILE__ ), array('jquery'), '1.0.0', true );
+	wp_register_script( 'ww-rmwoo-js', plugins_url( 'assets/js/restaurant-menu-woo.js', __FILE__ ), array('jquery'), '1.0.0', true );
 
 	wp_localize_script( 'ww-custom-bundle-js', 'localize',
     	array(

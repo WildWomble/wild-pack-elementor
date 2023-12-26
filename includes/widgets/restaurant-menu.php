@@ -15,7 +15,7 @@ class Widget_RestaurantMenu extends \Elementor\Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eicon-code';
+		return 'eicon-cart';
 	}
 
 	public function get_custom_help_url() {
