@@ -105,10 +105,12 @@ class Widget_RestaurantMenuWoo extends \Elementor\Widget_Base {
 		$repeater->add_control(
 			'rmw_repeater_title', 
 			[
-				'label'			=> esc_html__( 'Section Title', 'elementor-wild-pack' ),
+				'label'			=> esc_html__( 'Heading', 'elementor-wild-pack' ),
 				'type'			=> \Elementor\Controls_Manager::TEXT,
-				'default'		=> esc_html__( 'Section Title', 'elementor-wild-pack' ),
+				'default'		=> esc_html__( 'Food for everyone!', 'elementor-wild-pack' ),
+				'label_block'   => true,
 				'ai'			=> [ 'active' => false ],
+				'condition'		=> [ 'rmw_repeater_type' => 'heading' ],
 			]
 		);
 
@@ -130,7 +132,7 @@ class Widget_RestaurantMenuWoo extends \Elementor\Widget_Base {
 				'label' 		=> esc_html__( 'Products', 'elementor-wild-pack' ),
 				'type' 			=> \Elementor\Controls_Manager::REPEATER,
 				'fields' 		=> $repeater->get_controls(),
-				'title_field' 	=> '{{rmw_title}}',
+				'title_field' 	=> '{{rmw_repeater_product}}',
 			]
 		);
 
