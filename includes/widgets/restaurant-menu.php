@@ -1000,44 +1000,79 @@ class Widget_RestaurantMenu extends \Elementor\Widget_Base {
 						<h2 class="item-section-heading second-lang">' . $item['list_item_name_2nd'] . '</h2>
 					</section>';
 				} else {
-					echo '
-					<div class="item-' . esc_attr( $item['_id'] ) . ' restaurant-item ' . $hidden . '">
-						<div class="item-image"><img src="' . $item['list_item_image']['url'] . '"></div>
-						<div class="item-details">
-							<div class="item-title">
-								<div class="first-lang"><h2>' . $item['list_item_name'] . '</h2></div>
-								<div class="second-lang"><h2>' . $item['list_item_name_2nd'] . '</h2></div>
-							</div>
-							<div class="item-info">
-								<div class="info-weight">' . $item['list_item_weight'] . '</div>
-								<div class="info-price">' . $item['list_item_price'] . ' ' . $settings['currency'] . '</div>
-							</div>
-							<div class="item-subtitle">
-								<p class="first-lang">' . $settings['subtitle_first_lang'] . '</p>
-								<p class="second-lang">' . $settings['subtitle_second_lang'] . '</p>
-							</div>
-							<div class="item-facts">
-								<h4 class="first-lang">' . $settings['ingr_first_lang'] . '</h4>
-								<h4 class="second-lang">' . $settings['ingr_first_lang'] . '</h4>
-								<div class="item-ingredients">
-									<p class="first-lang">' . $item['list_item_ingredients'] . '</p>
-									<p class="second-lang">' . $item['list_item_ingredients_2nd'] . '</p>
+
+					if( $item['list_item_second_lang'] == 'yes' ) {
+						echo '
+						<div class="item-' . esc_attr( $item['_id'] ) . ' restaurant-item ' . $hidden . '">
+							<div class="item-image"><img src="' . $item['list_item_image']['url'] . '"></div>
+							<div class="item-details">
+								<div class="item-title">
+									<div class="first-lang"><h2>' . $item['list_item_name'] . '</h2></div>
+									<div class="second-lang"><h2>' . $item['list_item_name_2nd'] . '</h2></div>
 								</div>
-								<br>
-								<h4 class="first-lang">' . $settings['nutr_first_lang'] . '</h4>
-								<h4 class="second-lang">' . $settings['nutr_second_lang'] . '</h4>
-								<div class="item-nutr-facts">
-									<p class="first-lang">' . $item['list_item_nutrition_facts'] . '</p>
-									<p class="second-lang">' . $item['list_item_nutrition_facts_2nd'] . '</p>
+								<div class="item-info">
+									<div class="info-weight">' . $item['list_item_weight'] . '</div>
+									<div class="info-price">' . $item['list_item_price'] . ' ' . $settings['currency'] . '</div>
 								</div>
-							</div>
-							<div class="item-alergies">
-								<p class="first-lang">' . $settings['alergy_first_lang'] . ' ' . $item['list_item_alergies'] . '</p>
-								<p class="second-lang">' . $settings['alergy_second_lang'] . ' ' . $item['list_item_alergies_2nd'] . '</p>
+								<div class="item-subtitle">
+									<p class="first-lang">' . $settings['subtitle_first_lang'] . '</p>
+									<p class="second-lang">' . $settings['subtitle_second_lang'] . '</p>
+								</div>
+								<div class="item-facts">
+									<h4 class="first-lang">' . $settings['ingr_first_lang'] . '</h4>
+									<h4 class="second-lang">' . $settings['ingr_second_lang'] . '</h4>
+									<div class="item-ingredients">
+										<p class="first-lang">' . $item['list_item_ingredients'] . '</p>
+										<p class="second-lang">' . $item['list_item_ingredients_2nd'] . '</p>
+									</div>
+									<br>
+									<h4 class="first-lang">' . $settings['nutr_first_lang'] . '</h4>
+									<h4 class="second-lang">' . $settings['nutr_second_lang'] . '</h4>
+									<div class="item-nutr-facts">
+										<p class="first-lang">' . $item['list_item_nutrition_facts'] . '</p>
+										<p class="second-lang">' . $item['list_item_nutrition_facts_2nd'] . '</p>
+									</div>
+								</div>
+								<div class="item-alergies">
+									<p class="first-lang">' . $settings['alergy_first_lang'] . ' ' . $item['list_item_alergies'] . '</p>
+									<p class="second-lang">' . $settings['alergy_second_lang'] . ' ' . $item['list_item_alergies_2nd'] . '</p>
+								</div>
 							</div>
 						</div>
-					</div>
-					';
+						';
+					} else {
+						echo '
+						<div class="item-' . esc_attr( $item['_id'] ) . ' restaurant-item ' . $hidden . '">
+							<div class="item-image"><img src="' . $item['list_item_image']['url'] . '"></div>
+							<div class="item-details">
+								<div class="item-title">
+									<div class="first-lang"><h2>' . $item['list_item_name'] . '</h2></div>
+								</div>
+								<div class="item-info">
+									<div class="info-weight">' . $item['list_item_weight'] . '</div>
+									<div class="info-price">' . $item['list_item_price'] . ' ' . $settings['currency'] . '</div>
+								</div>
+								<div class="item-subtitle">
+									<p class="first-lang">' . $settings['subtitle_first_lang'] . '</p>
+								</div>
+								<div class="item-facts">
+									<h4 class="first-lang">' . $settings['ingr_first_lang'] . '</h4>
+									<div class="item-ingredients">
+										<p class="first-lang">' . $item['list_item_ingredients'] . '</p>
+									</div>
+									<br>
+									<h4 class="first-lang">' . $settings['nutr_first_lang'] . '</h4>
+									<div class="item-nutr-facts">
+										<p class="first-lang">' . $item['list_item_nutrition_facts'] . '</p>
+									</div>
+								</div>
+								<div class="item-alergies">
+									<p class="first-lang">' . $settings['alergy_first_lang'] . ' ' . $item['list_item_alergies'] . '</p>
+								</div>
+							</div>
+						</div>
+						';
+					}
 				}
 			}
 			echo '</div>';
