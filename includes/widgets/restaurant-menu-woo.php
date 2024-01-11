@@ -78,13 +78,26 @@ class Widget_RestaurantMenuWoo extends \Elementor\Widget_Base {
 			]
 		);
 
+		$this->add_control(
+			'rmw-shop-bag-icon',
+			[
+				'label'			=> esc_html__( 'Add to Cart Icon', 'textdomain' ),
+				'type' 			=> \Elementor\Controls_Manager::ICONS,
+				'default' 		=> [
+					'value' 		=> 'fas fa-shopping-cart',
+					'library' 		=> 'fa-solid',
+				],
+			]
+		);
+
 		$repeater = new \Elementor\Repeater();
 
 		$repeater->add_control(
 			'rmw_repeater_type',
 			[
 				'label' 		=> esc_html__( 'Type', 'elementor-wild-pack' ),
-				'type' 			=> \Elementor\Controls_Manager::SELECT,
+				'type' 			=> \Elementor\Controls_Manager::SELECT2,
+				'multiple'		=> false,
 				'default' 		=> 'item',
 				'options' 		=> [
 					'item' 		=> esc_html__( 'Item', 'elementor-wild-pack' ),
@@ -126,18 +139,155 @@ class Widget_RestaurantMenuWoo extends \Elementor\Widget_Base {
 			]
 		);
 
+		$repeater->add_control(
+			'rmw_repeater_ingredients',
+			[
+				'label' 		=> esc_html__( 'Ingredients', 'elementor-wild-pack' ),
+				'type' 			=> \Elementor\Controls_Manager::TEXTAREA,
+				'default' 		=> esc_html__( 'N/A' , 'elementor-wild-pack' ),
+				'condition'		=> [ 'rmw_repeater_type' => 'item' ],
+				'ai' 			=> [ 'active' => false ],
+			]
+		);
+
+		$repeater->add_control(
+			'rmw_repeater_nfacts',
+			[
+				'label' 		=> esc_html__( 'Nutrition Facts', 'elementor-wild-pack' ),
+				'type' 			=> \Elementor\Controls_Manager::TEXTAREA,
+				'default' 		=> esc_html__( 'N/A' , 'elementor-wild-pack' ),
+				'condition'		=> [ 'rmw_repeater_type' => 'item' ],
+				'ai' 			=> [ 'active' => false ],
+			]
+		);
+
+		$repeater->add_control(
+			'rmw_repeater_weight', 
+			[
+				'label'			=> esc_html__( 'Weight', 'elementor-wild-pack' ),
+				'type'			=> \Elementor\Controls_Manager::TEXT,
+				'default'		=> esc_html__( '250g', 'elementor-wild-pack' ),
+				'label_block'   => true,
+				'ai'			=> [ 'active' => false ],
+				'condition'		=> [ 'rmw_repeater_type' => 'item' ],
+			]
+		);
+
 		$this->add_control(
 			'rmw_items',
 			[
-				'label' 		=> esc_html__( 'Products', 'elementor-wild-pack' ),
+				'label' 		=> esc_html__( 'Items to display', 'elementor-wild-pack' ),
 				'type' 			=> \Elementor\Controls_Manager::REPEATER,
 				'fields' 		=> $repeater->get_controls(),
-				'title_field' 	=> '{{rmw_repeater_product}}',
+				'title_field' 	=> '{{rmw_repeater_type}} {{rmw_repeater_product}}',
 			]
 		);
 
 		$this->end_controls_section();
 
+		$this->start_controls_section(
+			'rmw_strings',
+			[
+				'label' 		=> esc_html__( 'Strings', 'elementor-wild-pack' ),
+				'tab' 			=> \Elementor\Controls_Manager::TAB_CONTENT,
+			]
+		);
+
+		$this->add_control(
+			'rmw_subtitle',
+			[
+				'label' 		=> esc_html__( '"Click to show additional info" string', 'elementor-wild-pack' ),
+				'type' 			=> \Elementor\Controls_Manager::TEXT,
+				'default' 		=> esc_html__( 'Click pentru valori nutritionale.' , 'elementor-wild-pack' ),
+				'label_block' 	=> true,
+				'ai' 			=> [ 'active' => false ],
+			]
+		);
+
+		$this->add_control(
+			'rmw_ingredients_title',
+			[
+				'label' 		=> esc_html__( '"Ingredients" string', 'elementor-wild-pack' ),
+				'type' 			=> \Elementor\Controls_Manager::TEXT,
+				'default' 		=> esc_html__( 'Ingrediente' , 'elementor-wild-pack' ),
+				'label_block' 	=> true,
+				'ai' 			=> [ 'active' => false ],
+			]
+		);
+
+		$this->add_control(
+			'rmw_nfacts_title',
+			[
+				'label' 		=> esc_html__( '"Nutrition Facts" string', 'elementor-wild-pack' ),
+				'type' 			=> \Elementor\Controls_Manager::TEXT,
+				'default' 		=> esc_html__( 'Informatii Nutritionale 100g' , 'elementor-wild-pack' ),
+				'label_block' 	=> true,
+				'ai' 			=> [ 'active' => false ],
+			]
+		);
+		
+		$this->end_controls_section();
+	}
+
+	protected function render() {
+		$settings = $this->get_settings_for_display();
+
+		if( $settings['rmw_items'] ) {
+
+			echo '<div class="restaurant-items-woo">';
+
+			foreach( $settings['rmw_items'] as $item ) {
+				$is_hidden = ( $item['rmw_repeater_show'] === 'yes' ) ? true : false;
+				
+				$product = wc_get_product( $item['rmw_repeater_product'] );
+
+				if( $is_hidden ) {
+
+					if( $item['rmw_repeater_type'] === 'item' ) {
+						echo '
+						<div class="restaurant-item item-' . esc_attr( $item['_id'] ) . '">
+							<div class="item-image">' . $product->get_image() . '</div>
+							<div class="item-details">
+								<div class="item-title">
+									<h2>' . $product->get_name() . '</h2>
+								</div>
+								<div class="item-info">
+									<div class="info-weight">' . $item['rmw_repeater_weight'] . '</div>
+									<div class="info-price">' . $product->get_price_html() . ' <a href="' . get_site_url() . '/?add-to-cart=' . $item['rmw_repeater_product'] . '"><i class="' . $settings['rmw-shop-bag-icon']['value'] . '"></i></a></div>
+								</div>
+								<div class="item-subtitle">' . $settings['rmw_subtitle'] . '</div>
+								<div class="item-facts">
+									<h4>' . $settings['rmw_ingredients_title'] . '</h4>
+									<div class="item-ingredients">
+										<p>' . $item['rmw_repeater_ingredients'] . '</p>
+									</div>
+									<br>
+									<h4>' . $settings['rmw_nfacts_title'] . '</h4>
+									<div class="item-nfacts">
+										<p>' . $item['rmw_repeater_nfacts'] . '</p>
+									</div>
+								</div>
+								<div class="item-alergies">
+									<p>' . $settings['rmw_allergy_title'] . ' ' . $item['rmw_repeater_allergies'] . '</p>
+								</div>
+							</div>
+						</div>';
+
+					} else {
+						echo ' 
+						<section class="list-item-' . esc_attr( $item['_id'] ) . '">
+							<h2 class="item-section-heading">' . $item['rmw_repeater_title'] . '</h2>
+						</section>';
+					}
+
+				}
+			}
+
+			echo '</div>';
+
+		}
+
+		// var_dump($settings);
 	}
 
 }

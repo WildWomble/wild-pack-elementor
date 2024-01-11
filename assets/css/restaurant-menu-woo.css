@@ -1,32 +1,10 @@
-#language-switch label:hover {
-    cursor: pointer;
-    background: #eee;
-}
 
-#language-switch {
-    position: sticky;
-    top: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    background: #fff;
-    z-index: 15;
-}
-
-.logged-in #language-switch {
-    top: 32px;
-}
-
-#language-switch label {
-    flex: 1 1 50%;
-}
-
-.restaurant-items {
+.restaurant-items-woo {
     display: flex;
     flex-wrap: wrap;
 }
 
-.restaurant-items h2.item-section-heading {
+.restaurant-items-woo h2.item-section-heading {
     color: #ffd400;
     text-align: center;
     margin-bottom: 15px;
@@ -45,11 +23,11 @@
     display: block;
 }
 
-.restaurant-items section {
+.restaurant-items-woo section {
     width: 100%
 }
 
-.restaurant-items .restaurant-item {
+.restaurant-items-woo .restaurant-item {
     flex: 0 1 50%;
     padding: 10px;
     border-bottom: 1px solid #eee;
@@ -58,7 +36,7 @@
     align-items: center;
 }
 
-.restaurant-items .restaurant-item:hover {
+.restaurant-items-woo .restaurant-item:hover {
     background-color: #eee;
     cursor: pointer;
 }
@@ -125,16 +103,11 @@
     display: block;
 }
 
-.second-lang,
-#language-switch input {
-    display: none
-}
-
 .item-hidden {
     display: none !important;
 }
 
-.restaurant-items p {
+.restaurant-items-woo p {
     margin: 0;
 }
 
@@ -153,45 +126,11 @@
         padding: 100px 20px 0;
     }
 
-    .restaurant-items>.restaurant-item {
+    .restaurant-items-woo > .restaurant-item {
         flex: 1 1 100%;
     }
 
     .item-facts h4 {
         font-size: 18px
-    }
-
-    #language-switch img {
-        width: 35%;
-    }
-
-    #language-switch {
-        display: inline-flex;
-        text-align: center;
-    }
-
-    #language-switch span {
-        display: none;
-    }
-}
-
-@media screen and (min-width: 768px) {
-    #language-switch img {
-        width: 10%;
-        margin-right: 5px;
-    }
-
-    #language-switch label {
-        padding: 10px 5px;
-        border-radius: 10px;
-        justify-content: center;
-        align-items: center;
-        display: flex;
-        margin: 0;
-    }
-
-    #language-switch span {
-        font-weight: bold;
-        text-transform: capitalize;
     }
 }
