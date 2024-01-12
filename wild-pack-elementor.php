@@ -6,7 +6,7 @@
  * Author:                      WildWomble
  * Author URI:                  https://github.com/WildWomble
  * Text Domain:                 elementor-wild-pack
- * Domain Path:					/lang
+ * Domain Path:					/languages
  * Elementor tested up to:      3.18.3
  */
 
@@ -30,10 +30,12 @@ function widget_scripts() {
 	/* Styles */
 	wp_register_style( 'ww-custom-bundle-css', plugins_url( 'assets/css/custom-bundle.css', __FILE__ ), array(), '1.0.0', 'all' );
 	wp_register_style( 'ww-restaurant-menu-css', plugins_url( 'assets/css/restaurant-menu.css', __FILE__ ), array(), '1.0.0', 'all' );
+	wp_register_style( 'ww-rmwoo-css', plugins_url( 'assets/css/restaurant-menu-woo.css', __FILE__ ), array(), '1.0.0', 'all' );
 	
 	/* Scripts */
 	wp_register_script( 'ww-custom-bundle-js', plugins_url( 'assets/js/custom-bundle.js', __FILE__ ), array('jquery'), '1.0.0', true );
 	wp_register_script( 'ww-restaurant-menu-js', plugins_url( 'assets/js/restaurant-menu.js', __FILE__ ), array('jquery'), '1.0.0', true );
+	wp_register_script( 'ww-rmwoo-js', plugins_url( 'assets/js/restaurant-menu-woo.js', __FILE__ ), array('jquery'), '1.0.0', true );
 
 	wp_localize_script( 'ww-custom-bundle-js', 'localize',
     	array(
@@ -45,6 +47,23 @@ function widget_scripts() {
 }
 
 add_action( 'wp_enqueue_scripts', 'widget_scripts' );
+
+
+/**
+ * Add category to make it easier to find the addons in the editor
+ */
+function add_elementor_widget_categories( $elements_manager ) {
+
+	$elements_manager->add_category(
+		'wild-pack-category',
+		[
+			'title' => esc_html__( 'Wild Pack', 'elementor-wild-pack' ),
+			'icon' => 'fa fa-plug',
+		]
+	);
+
+}
+add_action( 'elementor/elements/categories_registered', 'add_elementor_widget_categories' );
 
 /**
  * Making a custom action for the form submission, check that the nonce is valid and sending back feedback in case of error.

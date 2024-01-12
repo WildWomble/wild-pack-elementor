@@ -217,8 +217,12 @@ class WildPack {
 		// Restaurant Menu without add to cart
 		require_once( __DIR__ . '/widgets/restaurant-menu.php');
 
+		// Restaurant Menu with add to cart
+		require_once( __DIR__ . '/widgets/restaurant-menu-woo.php');
+
 		$widgets_manager->register( new Widget_CustomBundle() );
 		$widgets_manager->register( new Widget_RestaurantMenu() );
+		$widgets_manager->register( new Widget_RestaurantMenuWoo() );
 
 	}
     

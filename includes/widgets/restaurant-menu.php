@@ -15,7 +15,7 @@ class Widget_RestaurantMenu extends \Elementor\Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eicon-code';
+		return 'eicon-cart';
 	}
 
 	public function get_custom_help_url() {
@@ -23,7 +23,7 @@ class Widget_RestaurantMenu extends \Elementor\Widget_Base {
 	}
 
 	public function get_categories() {
-		return [ 'general' ];
+		return [ 'wild-pack-category' ];
 	}
 
 	public function get_keywords() {
@@ -635,6 +635,18 @@ class Widget_RestaurantMenu extends \Elementor\Widget_Base {
 		);
 
 		$this->add_control(
+			'heading_text_color',
+			[
+				'label' 		=> esc_html__( 'Text Color', 'elementor-wild-pack' ),
+				'type' 			=> \Elementor\Controls_Manager::COLOR,
+				'default' 		=> '#ffd400',
+				'selectors' 	=> [
+					'{{WRAPPER}} .item-section-heading' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_control(
 			'heading_background_color',
 			[
 				'label' 		=> esc_html__( 'Background Color', 'elementor-wild-pack' ),
@@ -667,15 +679,49 @@ class Widget_RestaurantMenu extends \Elementor\Widget_Base {
 		);
 
 		$this->end_controls_section();
-		
-		/*
-		*	Item Name Group
-		*/
+
 		$this->start_controls_section(
-			'items_name_style',
+			'items_style',
 			[
-				'label' 		=> esc_html__( 'Item Name', 'elementor-wild-pack' ),
+				'label' 		=> esc_html__( 'Items', 'elementor-wild-pack' ),
 				'tab' 			=> \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_control(
+			'items_style_hover_group',
+			[
+				'type' => \Elementor\Controls_Manager::RAW_HTML,
+				'raw' => esc_html__( 'Hover', 'elementor-wild-pack' ),
+				'content_classes' => 'fw-bold',
+			]
+		);
+
+		$this->add_control(
+			'item_hover_bg',
+			[
+				'label' 		=> esc_html__( 'Background Color', 'elementor-wild-pack' ),
+				'type' 			=> \Elementor\Controls_Manager::COLOR,
+				'default' 		=> '#eee',
+				'selectors' 	=> [
+					'{{WRAPPER}} .restaurant-items .restaurant-item:hover' => 'background-color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_control(
+			'hr-0',
+			[
+				'type' 			=> \Elementor\Controls_Manager::DIVIDER,
+			]
+		);
+
+		$this->add_control(
+			'items_style_name_group',
+			[
+				'type' 				=> \Elementor\Controls_Manager::RAW_HTML,
+				'raw' 				=> esc_html__( 'Names', 'elementor-wild-pack' ),
+				'content_classes' 	=> 'fw-bold',
 			]
 		);
 
@@ -699,16 +745,19 @@ class Widget_RestaurantMenu extends \Elementor\Widget_Base {
 			]
 		);
 
-		$this->end_controls_section();
-
-		/*
-		*	Item Weight Group
-		*/
-		$this->start_controls_section(
-			'items_weight_style',
+		$this->add_control(
+			'hr-1',
 			[
-				'label' 		=> esc_html__( 'Item Weight', 'elementor-wild-pack' ),
-				'tab' 			=> \Elementor\Controls_Manager::TAB_STYLE,
+				'type' 			=> \Elementor\Controls_Manager::DIVIDER,
+			]
+		);
+
+		$this->add_control(
+			'items_style_weight_group',
+			[
+				'type' 				=> \Elementor\Controls_Manager::RAW_HTML,
+				'raw' 				=> esc_html__( 'Weight', 'elementor-wild-pack' ),
+				'content_classes' 	=> 'fw-bold',
 			]
 		);
 
@@ -732,16 +781,19 @@ class Widget_RestaurantMenu extends \Elementor\Widget_Base {
 			]
 		);
 
-		$this->end_controls_section();
-
-		/*
-		*	Item Price Group
-		*/
-		$this->start_controls_section(
-			'items_price_style',
+		$this->add_control(
+			'hr-2',
 			[
-				'label' 		=> esc_html__( 'Item Price', 'elementor-wild-pack' ),
-				'tab' 			=> \Elementor\Controls_Manager::TAB_STYLE,
+				'type' => \Elementor\Controls_Manager::DIVIDER,
+			]
+		);
+
+		$this->add_control(
+			'items_style_price_group',
+			[
+				'type' => \Elementor\Controls_Manager::RAW_HTML,
+				'raw' => esc_html__( 'Prices', 'elementor-wild-pack' ),
+				'content_classes' => 'fw-bold',
 			]
 		);
 
@@ -764,17 +816,20 @@ class Widget_RestaurantMenu extends \Elementor\Widget_Base {
 				],
 			]
 		);
-
-		$this->end_controls_section();
-
-		/*
-		*	Item Subtitle Group
-		*/
-		$this->start_controls_section(
-			'items_subtitle_style',
+		
+		$this->add_control(
+			'hr-3',
 			[
-				'label' 		=> esc_html__( 'Item Subtitle', 'elementor-wild-pack' ),
-				'tab' 			=> \Elementor\Controls_Manager::TAB_STYLE,
+				'type' => \Elementor\Controls_Manager::DIVIDER,
+			]
+		);
+
+		$this->add_control(
+			'items_style_subtitle_group',
+			[
+				'type' => \Elementor\Controls_Manager::RAW_HTML,
+				'raw' => esc_html__( 'Subtitle', 'elementor-wild-pack' ),
+				'content_classes' => 'fw-bold',
 			]
 		);
 
@@ -797,17 +852,20 @@ class Widget_RestaurantMenu extends \Elementor\Widget_Base {
 				],
 			]
 		);
-
-		$this->end_controls_section();
-
-		/*
-		*	Item Alergies Group
-		*/
-		$this->start_controls_section(
-			'items_alergy_style',
+		
+		$this->add_control(
+			'hr-4',
 			[
-				'label' 		=> esc_html__( 'Item Alergies', 'elementor-wild-pack' ),
-				'tab' 			=> \Elementor\Controls_Manager::TAB_STYLE,
+				'type' => \Elementor\Controls_Manager::DIVIDER,
+			]
+		);
+
+		$this->add_control(
+			'items_style_alergies_group',
+			[
+				'type' => \Elementor\Controls_Manager::RAW_HTML,
+				'raw' => esc_html__( 'Alergies', 'elementor-wild-pack' ),
+				'content_classes' => 'fw-bold',
 			]
 		);
 
@@ -832,15 +890,21 @@ class Widget_RestaurantMenu extends \Elementor\Widget_Base {
 		);
 
 		$this->end_controls_section();
-
-		/*
-		*	Item Ingredients Group - Shown on item click
-		*/
+		
 		$this->start_controls_section(
-			'items_ingr_style',
+			'items_on_click_style',
 			[
-				'label' 		=> esc_html__( 'Item Ingredients - Shown on item click', 'elementor-wild-pack' ),
+				'label' 		=> esc_html__( 'On item click text settings', 'elementor-wild-pack' ),
 				'tab' 			=> \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_control(
+			'items_style_ingr_group',
+			[
+				'type' => \Elementor\Controls_Manager::RAW_HTML,
+				'raw' => esc_html__( 'Ingredients', 'elementor-wild-pack' ),
+				'content_classes' => 'fw-bold',
 			]
 		);
 
@@ -864,16 +928,19 @@ class Widget_RestaurantMenu extends \Elementor\Widget_Base {
 			]
 		);
 
-		$this->end_controls_section();
-
-		/*
-		*	Item Nutrition Group - Shown on item click
-		*/
-		$this->start_controls_section(
-			'items_nutr_style',
+		$this->add_control(
+			'hr-5',
 			[
-				'label' 		=> esc_html__( 'Item Nutrition Facts - Shown on item click', 'elementor-wild-pack' ),
-				'tab' 			=> \Elementor\Controls_Manager::TAB_STYLE,
+				'type' => \Elementor\Controls_Manager::DIVIDER,
+			]
+		);
+
+		$this->add_control(
+			'items_style_nutr_group',
+			[
+				'type' => \Elementor\Controls_Manager::RAW_HTML,
+				'raw' => esc_html__( 'Nutrition Facts', 'elementor-wild-pack' ),
+				'content_classes' => 'fw-bold',
 			]
 		);
 
@@ -896,7 +963,7 @@ class Widget_RestaurantMenu extends \Elementor\Widget_Base {
 				],
 			]
 		);
-
+		
 		$this->end_controls_section();
 
 	}
@@ -933,44 +1000,79 @@ class Widget_RestaurantMenu extends \Elementor\Widget_Base {
 						<h2 class="item-section-heading second-lang">' . $item['list_item_name_2nd'] . '</h2>
 					</section>';
 				} else {
-					echo '
-					<div class="item-' . esc_attr( $item['_id'] ) . ' restaurant-item ' . $hidden . '">
-						<div class="item-image"><img src="' . $item['list_item_image']['url'] . '"></div>
-						<div class="item-details">
-							<div class="item-title">
-								<div class="first-lang"><h2>' . $item['list_item_name'] . '</h2></div>
-								<div class="second-lang"><h2>' . $item['list_item_name_2nd'] . '</h2></div>
-							</div>
-							<div class="item-info">
-								<div class="info-weight">' . $item['list_item_weight'] . '</div>
-								<div class="info-price">' . $item['list_item_price'] . ' ' . $settings['currency'] . '</div>
-							</div>
-							<div class="item-subtitle">
-								<p class="first-lang">' . $settings['subtitle_first_lang'] . '</p>
-								<p class="second-lang">' . $settings['subtitle_second_lang'] . '</p>
-							</div>
-							<div class="item-facts">
-								<h4 class="first-lang">' . $settings['ingr_first_lang'] . '</h4>
-								<h4 class="second-lang">' . $settings['ingr_first_lang'] . '</h4>
-								<div class="item-ingredients">
-									<p class="first-lang">' . $item['list_item_ingredients'] . '</p>
-									<p class="second-lang">' . $item['list_item_ingredients_2nd'] . '</p>
+
+					if( $item['list_item_second_lang'] == 'yes' ) {
+						echo '
+						<div class="item-' . esc_attr( $item['_id'] ) . ' restaurant-item ' . $hidden . '">
+							<div class="item-image"><img src="' . $item['list_item_image']['url'] . '"></div>
+							<div class="item-details">
+								<div class="item-title">
+									<div class="first-lang"><h2>' . $item['list_item_name'] . '</h2></div>
+									<div class="second-lang"><h2>' . $item['list_item_name_2nd'] . '</h2></div>
 								</div>
-								<br>
-								<h4 class="first-lang">' . $settings['nutr_first_lang'] . '</h4>
-								<h4 class="second-lang">' . $settings['nutr_second_lang'] . '</h4>
-								<div class="item-nutr-facts">
-									<p class="first-lang">' . $item['list_item_nutrition_facts'] . '</p>
-									<p class="second-lang">' . $item['list_item_nutrition_facts_2nd'] . '</p>
+								<div class="item-info">
+									<div class="info-weight">' . $item['list_item_weight'] . '</div>
+									<div class="info-price">' . $item['list_item_price'] . ' ' . $settings['currency'] . '</div>
 								</div>
-							</div>
-							<div class="item-alergies">
-								<p class="first-lang">' . $settings['alergy_first_lang'] . ' ' . $item['list_item_alergies'] . '</p>
-								<p class="second-lang">' . $settings['alergy_second_lang'] . ' ' . $item['list_item_alergies_2nd'] . '</p>
+								<div class="item-subtitle">
+									<p class="first-lang">' . $settings['subtitle_first_lang'] . '</p>
+									<p class="second-lang">' . $settings['subtitle_second_lang'] . '</p>
+								</div>
+								<div class="item-facts">
+									<h4 class="first-lang">' . $settings['ingr_first_lang'] . '</h4>
+									<h4 class="second-lang">' . $settings['ingr_second_lang'] . '</h4>
+									<div class="item-ingredients">
+										<p class="first-lang">' . $item['list_item_ingredients'] . '</p>
+										<p class="second-lang">' . $item['list_item_ingredients_2nd'] . '</p>
+									</div>
+									<br>
+									<h4 class="first-lang">' . $settings['nutr_first_lang'] . '</h4>
+									<h4 class="second-lang">' . $settings['nutr_second_lang'] . '</h4>
+									<div class="item-nutr-facts">
+										<p class="first-lang">' . $item['list_item_nutrition_facts'] . '</p>
+										<p class="second-lang">' . $item['list_item_nutrition_facts_2nd'] . '</p>
+									</div>
+								</div>
+								<div class="item-alergies">
+									<p class="first-lang">' . $settings['alergy_first_lang'] . ' ' . $item['list_item_alergies'] . '</p>
+									<p class="second-lang">' . $settings['alergy_second_lang'] . ' ' . $item['list_item_alergies_2nd'] . '</p>
+								</div>
 							</div>
 						</div>
-					</div>
-					';
+						';
+					} else {
+						echo '
+						<div class="item-' . esc_attr( $item['_id'] ) . ' restaurant-item ' . $hidden . '">
+							<div class="item-image"><img src="' . $item['list_item_image']['url'] . '"></div>
+							<div class="item-details">
+								<div class="item-title">
+									<div class="first-lang"><h2>' . $item['list_item_name'] . '</h2></div>
+								</div>
+								<div class="item-info">
+									<div class="info-weight">' . $item['list_item_weight'] . '</div>
+									<div class="info-price">' . $item['list_item_price'] . ' ' . $settings['currency'] . '</div>
+								</div>
+								<div class="item-subtitle">
+									<p class="first-lang">' . $settings['subtitle_first_lang'] . '</p>
+								</div>
+								<div class="item-facts">
+									<h4 class="first-lang">' . $settings['ingr_first_lang'] . '</h4>
+									<div class="item-ingredients">
+										<p class="first-lang">' . $item['list_item_ingredients'] . '</p>
+									</div>
+									<br>
+									<h4 class="first-lang">' . $settings['nutr_first_lang'] . '</h4>
+									<div class="item-nutr-facts">
+										<p class="first-lang">' . $item['list_item_nutrition_facts'] . '</p>
+									</div>
+								</div>
+								<div class="item-alergies">
+									<p class="first-lang">' . $settings['alergy_first_lang'] . ' ' . $item['list_item_alergies'] . '</p>
+								</div>
+							</div>
+						</div>
+						';
+					}
 				}
 			}
 			echo '</div>';
