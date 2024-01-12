@@ -6,7 +6,7 @@
  * Author:                      WildWomble
  * Author URI:                  https://github.com/WildWomble
  * Text Domain:                 elementor-wild-pack
- * Domain Path:					/lang
+ * Domain Path:					/languages
  * Elementor tested up to:      3.18.3
  */
 
@@ -47,6 +47,23 @@ function widget_scripts() {
 }
 
 add_action( 'wp_enqueue_scripts', 'widget_scripts' );
+
+
+/**
+ * Add category to make it easier to find the addons in the editor
+ */
+function add_elementor_widget_categories( $elements_manager ) {
+
+	$elements_manager->add_category(
+		'wild-pack-category',
+		[
+			'title' => esc_html__( 'Wild Pack', 'elementor-wild-pack' ),
+			'icon' => 'fa fa-plug',
+		]
+	);
+
+}
+add_action( 'elementor/elements/categories_registered', 'add_elementor_widget_categories' );
 
 /**
  * Making a custom action for the form submission, check that the nonce is valid and sending back feedback in case of error.

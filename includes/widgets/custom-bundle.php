@@ -23,7 +23,7 @@ class Widget_CustomBundle extends \Elementor\Widget_Base {
 	}
 
 	public function get_categories() {
-		return [ 'general' ];
+		return [ 'wild-pack-category' ];
 	}
 
 	public function get_keywords() {

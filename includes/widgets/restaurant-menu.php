@@ -23,7 +23,7 @@ class Widget_RestaurantMenu extends \Elementor\Widget_Base {
 	}
 
 	public function get_categories() {
-		return [ 'general' ];
+		return [ 'wild-pack-category' ];
 	}
 
 	public function get_keywords() {
@@ -712,16 +712,16 @@ class Widget_RestaurantMenu extends \Elementor\Widget_Base {
 		$this->add_control(
 			'hr-0',
 			[
-				'type' => \Elementor\Controls_Manager::DIVIDER,
+				'type' 			=> \Elementor\Controls_Manager::DIVIDER,
 			]
 		);
 
 		$this->add_control(
 			'items_style_name_group',
 			[
-				'type' => \Elementor\Controls_Manager::RAW_HTML,
-				'raw' => esc_html__( 'Names', 'elementor-wild-pack' ),
-				'content_classes' => 'fw-bold',
+				'type' 				=> \Elementor\Controls_Manager::RAW_HTML,
+				'raw' 				=> esc_html__( 'Names', 'elementor-wild-pack' ),
+				'content_classes' 	=> 'fw-bold',
 			]
 		);
 
@@ -748,16 +748,16 @@ class Widget_RestaurantMenu extends \Elementor\Widget_Base {
 		$this->add_control(
 			'hr-1',
 			[
-				'type' => \Elementor\Controls_Manager::DIVIDER,
+				'type' 			=> \Elementor\Controls_Manager::DIVIDER,
 			]
 		);
 
 		$this->add_control(
 			'items_style_weight_group',
 			[
-				'type' => \Elementor\Controls_Manager::RAW_HTML,
-				'raw' => esc_html__( 'Weight', 'elementor-wild-pack' ),
-				'content_classes' => 'fw-bold',
+				'type' 				=> \Elementor\Controls_Manager::RAW_HTML,
+				'raw' 				=> esc_html__( 'Weight', 'elementor-wild-pack' ),
+				'content_classes' 	=> 'fw-bold',
 			]
 		);
 
