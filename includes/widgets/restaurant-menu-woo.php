@@ -112,6 +112,17 @@ class Widget_RestaurantMenuWoo extends \Elementor\Widget_Base {
 		);
 		
 		$this->add_control(
+			'rmw_display_price',
+			[
+				'label' => esc_html__( 'Display prices?', 'elementor-wild-pack' ),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Yes', 'elementor-wild-pack' ),
+				'label_off' => esc_html__( 'No', 'elementor-wild-pack' ),
+				'default' => 'yes',
+			]
+		);
+		
+		$this->add_control(
 			'rmw_display_click_popup',
 			[
 				'label' => esc_html__( 'Disable click popup globally?', 'elementor-wild-pack' ),
@@ -904,6 +915,15 @@ class Widget_RestaurantMenuWoo extends \Elementor\Widget_Base {
 							$add_to_cart_HTML = '<a class="add-to-cart" href="' . get_site_url() . '/?add-to-cart=' . $item['rmw_repeater_product'] . '"><i class="' . $settings['rmw_shop_bag_icon']['value'] . '"></i> ' . $add_to_cart_STRING . '</a>';
 						}
 
+						/**
+						 * Check if user wants to hide prices
+						 */
+						if( $settings['rmw_display_price'] === 'no' ) {
+							$prices_HTML = null;
+						} elseif ( $settings['rmw_display_price'] === 'yes' ) {
+							$prices_HTML = $product->get_price_html();
+						}
+
 						echo '
 						<div class="restaurant-item item-' . esc_attr( $item['_id'] ) . '">
 							<div class="item-image">' . $product->get_image() . '</div>
@@ -913,7 +933,7 @@ class Widget_RestaurantMenuWoo extends \Elementor\Widget_Base {
 								</div>
 								<div class="item-info">
 									<div class="info-weight">' . $item['rmw_repeater_weight'] . '</div>
-									<div class="info-price">' . $product->get_price_html() . ' ' . $add_to_cart_HTML . '</div>
+									<div class="info-price">' . $prices_HTML . ' ' . $add_to_cart_HTML . '</div>
 								</div>
 								' . $item_facts . '
 								<div class="item-alergies">
