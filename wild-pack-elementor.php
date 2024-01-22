@@ -2,7 +2,7 @@
 /**
  * Plugin Name:                 Wild Pack - Elementor Addons
  * Description:                 Some addons to make the work easier. Includes a few addons i made for myself to ease the work.
- * Version:                     1.2.0
+ * Version:                     1.3.0
  * Author:                      WildWomble
  * Author URI:                  https://github.com/WildWomble
  * Text Domain:                 elementor-wild-pack
