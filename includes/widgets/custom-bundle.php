@@ -683,7 +683,7 @@ class Widget_CustomBundle extends \Elementor\Widget_Base {
 			}
 
 			$button_messages = array(
-				esc_html( $product->add_to_cart_text() ), // add to cart button from the product (in case the user changes it)
+				esc_html__( 'Add to cart', 'woocommerce' ), // using WooCommerce's translation for a simpler and faster use
 				esc_html__( 'Proceed to checkout', 'woocommerce' ), // using WooCommerce's translation for a simpler and faster use
 				esc_html__( 'Add Another', 'elementor-wild-pack' ) 
 			);
